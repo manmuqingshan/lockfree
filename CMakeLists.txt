@@ -11,9 +11,12 @@ project(lockfree
 add_subdirectory(${PROJECT_NAME})
 
 # Library configuration
-if (DEFINED LOCKFREE_CACHE_COHERENT)
-    target_compile_definitions(${PROJECT_NAME} INTERFACE LOCKFREE_CACHE_COHERENT)
-endif()
+option(LOCKFREE_CACHE_COHERENT
+    "Pad data structures to cacheline boundaries to eliminate false sharing" ON)
+target_compile_definitions(${PROJECT_NAME}
+INTERFACE
+    LOCKFREE_CACHE_COHERENT=$<BOOL:${LOCKFREE_CACHE_COHERENT}>
+)
 
 if (DEFINED LOCKFREE_CACHELINE_LENGTH)
     target_compile_definitions(${PROJECT_NAME}
