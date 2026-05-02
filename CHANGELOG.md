@@ -17,7 +17,7 @@
 - Ensured [PriorityQueue](docs/mpmc/priority_queue.md)s must have at least 2 priorities
 
 ## 2.0.10
-- Added a missing include in the [Ring Buffer](docs/spsc/ring_buf.md) causing errors for `memcpy use
+- Added a missing include in the [Ring Buffer](docs/spsc/ring_buf.md) causing errors for `memcpy` use
 
 ## 2.0.9
 - Fixed the initialization order in the [Bipartite Buffer](docs/spsc/bipartite_buf.md) constructor
