@@ -35,7 +35,7 @@ if (!write_started) {
         write_started = true;
     }
 } else {
-    if (ADC_PollDmaComplete(&adc_dma_h) {
+    if (ADC_PollDmaComplete(&adc_dma_h)) {
         bb_adc.WriteRelease(data.size());
         write_started = false;
     }
@@ -47,7 +47,7 @@ There is also a `std::span` based API for those using C++20 and up:
 ```cpp
 auto read = bb_adc.ReadAcquireSpan();
 
-if (!read.empty())) {
+if (!read.empty()) {
     auto span_used = DoStuffWithData(read);
     bb_adc.ReadRelease(span_used);
 }
@@ -62,7 +62,7 @@ if (!write_started) {
         write_started = true;
     }
 } else {
-    if (ADC_PollDmaComplete(&adc_dma_h) {
+    if (ADC_PollDmaComplete(&adc_dma_h)) {
         bb_adc.WriteRelease(data.size());
         write_started = false;
     }
