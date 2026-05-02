@@ -97,7 +97,7 @@ TEST_CASE("spsc::PriorityQueue - Multithreaded read/write",
         uint64_t value = 0;
         uint8_t prio = 0;
         do {
-            value = cnt << 2 + prio;
+            value = (cnt << 2) | prio;
             bool push_success = queue.Push(value, prio);
             if (push_success) {
                 written.push_back(value);
