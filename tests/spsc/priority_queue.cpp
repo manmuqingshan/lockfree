@@ -104,7 +104,7 @@ TEST_CASE("spsc::PriorityQueue - Multithreaded read/write",
                 prio = (prio + 1) % 4; // this could be also randomly generated
                 cnt++;
             }
-        } while (cnt < TEST_MT_TRANSFER_CNT + 1);
+        } while (cnt < TEST_MT_TRANSFER_CNT);
     });
 
     for (auto &t : threads) {
