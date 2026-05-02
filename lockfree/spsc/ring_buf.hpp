@@ -94,7 +94,7 @@ template <typename T, size_t size> class RingBuf {
      * Should only be called from the consumer thread.
      * @param[out] Pointer to the space to read the data to
      * @param[in] Number of elements to read
-     * @retval Write success
+     * @retval Read success
      */
     bool Read(T *data, size_t cnt);
 
@@ -102,7 +102,7 @@ template <typename T, size_t size> class RingBuf {
      * @brief Reads data from the ring buffer.
      * Should only be called from the consumer thread.
      * @param[out] Array to write the read to
-     * @retval Write success
+     * @retval Read success
      */
     template <size_t arr_size> bool Read(std::array<T, arr_size> &data);
 
@@ -111,7 +111,7 @@ template <typename T, size_t size> class RingBuf {
      * @brief Reads data from the ring buffer.
      * Should only be called from the consumer thread.
      * @param[out] Span to read to
-     * @retval Write success
+     * @retval Read success
      */
     bool Read(std::span<T> data);
 #endif
@@ -124,7 +124,7 @@ template <typename T, size_t size> class RingBuf {
      * it. Should only be called from the consumer thread.
      * @param[out] Pointer to the space to read the data to
      * @param[in] Number of elements to read
-     * @retval Write success
+     * @retval Peek success
      */
     bool Peek(T *data, size_t cnt) const;
 
@@ -135,7 +135,7 @@ template <typename T, size_t size> class RingBuf {
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
      * @param[out] Array to write the read to
-     * @retval Write success
+     * @retval Peek success
      */
     template <size_t arr_size> bool Peek(std::array<T, arr_size> &data) const;
 
@@ -146,7 +146,7 @@ template <typename T, size_t size> class RingBuf {
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
      * @param[out] Span to read to
-     * @retval Write success
+     * @retval Peek success
      */
 #if __cplusplus >= 202002L || (defined(_MSVC_LANG) && _MSVC_LANG >= 202002L)
     bool Peek(std::span<T> data) const;
@@ -159,7 +159,7 @@ template <typename T, size_t size> class RingBuf {
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
      * @param[in] Number of elements to skip
-     * @retval Write success
+     * @retval Skip success
      */
     bool Skip(size_t cnt);
 
