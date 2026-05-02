@@ -61,7 +61,7 @@ TEST_CASE("spsc::BipartiteBuf - Write with overflow condition",
         bb.WriteAcquire(sizeof(test_data2) / sizeof(test_data2[0]));
     REQUIRE(write_location != nullptr);
     std::copy(std::begin(test_data2), std::end(test_data2), write_location);
-    bb.WriteRelease(sizeof(test_data2) / sizeof(test_data[0]));
+    bb.WriteRelease(sizeof(test_data2) / sizeof(test_data2[0]));
 
     read = bb.ReadAcquire();
     REQUIRE(read.first != nullptr);
