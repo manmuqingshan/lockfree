@@ -65,8 +65,8 @@ template <typename T, size_t size> class RingBuf {
     /**
      * @brief Writes data to the ring buffer.
      * Should only be called from the producer thread.
-     * @param[in] Pointer to the data to write
-     * @param[in] Number of elements to write
+     * @param[in] data Pointer to the data to write
+     * @param[in] cnt Number of elements to write
      * @retval Write success
      */
     bool Write(const T *data, size_t cnt);
@@ -74,7 +74,7 @@ template <typename T, size_t size> class RingBuf {
     /**
      * @brief Writes data to the ring buffer.
      * Should only be called from the producer thread.
-     * @param[in] Data array to write
+     * @param[in] data Data array to write
      * @retval Write success
      */
     template <size_t arr_size> bool Write(const std::array<T, arr_size> &data);
@@ -83,7 +83,7 @@ template <typename T, size_t size> class RingBuf {
     /**
      * @brief Writes data to the ring buffer.
      * Should only be called from the producer thread.
-     * @param[in] Span of data to write
+     * @param[in] data Span of data to write
      * @retval Write success
      */
     bool Write(std::span<const T> data);
@@ -92,8 +92,8 @@ template <typename T, size_t size> class RingBuf {
     /**
      * @brief Reads data from the ring buffer.
      * Should only be called from the consumer thread.
-     * @param[out] Pointer to the space to read the data to
-     * @param[in] Number of elements to read
+     * @param[out] data Pointer to the space to read the data to
+     * @param[in] cnt Number of elements to read
      * @retval Read success
      */
     bool Read(T *data, size_t cnt);
@@ -101,7 +101,7 @@ template <typename T, size_t size> class RingBuf {
     /**
      * @brief Reads data from the ring buffer.
      * Should only be called from the consumer thread.
-     * @param[out] Array to write the read to
+     * @param[out] data Array to write the read to
      * @retval Read success
      */
     template <size_t arr_size> bool Read(std::array<T, arr_size> &data);
@@ -110,7 +110,7 @@ template <typename T, size_t size> class RingBuf {
     /**
      * @brief Reads data from the ring buffer.
      * Should only be called from the consumer thread.
-     * @param[out] Span to read to
+     * @param[out] data Span to read to
      * @retval Read success
      */
     bool Read(std::span<T> data);
@@ -122,8 +122,8 @@ template <typename T, size_t size> class RingBuf {
      * The combination is most useful when we want to keep the data in the
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
-     * @param[out] Pointer to the space to read the data to
-     * @param[in] Number of elements to read
+     * @param[out] data Pointer to the space to read the data to
+     * @param[in] cnt Number of elements to read
      * @retval Peek success
      */
     bool Peek(T *data, size_t cnt) const;
@@ -134,7 +134,7 @@ template <typename T, size_t size> class RingBuf {
      * The combination is most useful when we want to keep the data in the
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
-     * @param[out] Array to write the read to
+     * @param[out] data Array to write the read to
      * @retval Peek success
      */
     template <size_t arr_size> bool Peek(std::array<T, arr_size> &data) const;
@@ -145,7 +145,7 @@ template <typename T, size_t size> class RingBuf {
      * The combination is most useful when we want to keep the data in the
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
-     * @param[out] Span to read to
+     * @param[out] data Span to read to
      * @retval Peek success
      */
 #if __cplusplus >= 202002L || (defined(_MSVC_LANG) && _MSVC_LANG >= 202002L)
@@ -158,7 +158,7 @@ template <typename T, size_t size> class RingBuf {
      * The combination is most useful when we want to keep the data in the
      * buffer after some operation using the data fails, or uses only some of
      * it. Should only be called from the consumer thread.
-     * @param[in] Number of elements to skip
+     * @param[in] cnt Number of elements to skip
      * @retval Skip success
      */
     bool Skip(size_t cnt);

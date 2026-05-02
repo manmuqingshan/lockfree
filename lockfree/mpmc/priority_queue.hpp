@@ -63,15 +63,15 @@ template <typename T, size_t size, size_t priority_count> class PriorityQueue {
   public:
     /**
      * @brief Adds an element with a specified priority into the queue.
-     * @param[in] Element
-     * @param[in] Element priority
+     * @param[in] element Element to push
+     * @param[in] priority Element priority
      * @retval Operation success
      */
     bool Push(const T &element, size_t priority);
 
     /**
      * @brief Removes an element with the highest priority from the queue.
-     * @param[out] Element
+     * @param[out] element Element popped
      * @retval Operation success
      */
     bool Pop(T &element);

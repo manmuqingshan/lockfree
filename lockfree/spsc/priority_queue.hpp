@@ -65,8 +65,8 @@ template <typename T, size_t size, size_t priority_count> class PriorityQueue {
     /**
      * @brief Adds an element with a specified priority into the queue.
      * Should only be called from the producer thread.
-     * @param[in] Element
-     * @param[in] Element priority
+     * @param[in] element Element to push
+     * @param[in] priority Element priority
      * @retval Operation success
      */
     bool Push(const T &element, size_t priority);
@@ -74,7 +74,7 @@ template <typename T, size_t size, size_t priority_count> class PriorityQueue {
     /**
      * @brief Removes an element with the highest priority from the queue.
      * Should only be called from the consumer thread.
-     * @param[out] Element
+     * @param[out] element Element popped
      * @retval Operation success
      */
     bool Pop(T &element);
