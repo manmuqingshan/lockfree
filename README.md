@@ -1,5 +1,5 @@
 # lockfree
-![CMake](https://github.com/DNedic/lockfree/actions/workflows/.github/workflows/cmake.yml/badge.svg)
+![CMake](https://github.com/DNedic/lockfree/actions/workflows/cmake.yml/badge.svg)
 
 `lockfree` is a collection of lock-free data structures written in standard C++11 and suitable for all platforms - from deeply embedded to HPC.
 
