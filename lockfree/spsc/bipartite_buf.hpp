@@ -41,6 +41,11 @@
 #ifndef LOCKFREE_BIPARTITE_BUF_HPP
 #define LOCKFREE_BIPARTITE_BUF_HPP
 
+#if !defined(LOCKFREE_CACHE_COHERENT) || !defined(LOCKFREE_CACHELINE_LENGTH)
+#error                                                                         \
+    "lockfree requires LOCKFREE_CACHE_COHERENT and LOCKFREE_CACHELINE_LENGTH to be defined; use the CMake build or define them manually"
+#endif
+
 #include <atomic>
 #include <cstddef>
 #include <type_traits>

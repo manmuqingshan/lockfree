@@ -13,17 +13,13 @@ add_subdirectory(${PROJECT_NAME})
 # Library configuration
 option(LOCKFREE_CACHE_COHERENT
     "Pad data structures to cacheline boundaries to eliminate false sharing" ON)
+set(LOCKFREE_CACHELINE_LENGTH 64 CACHE STRING
+    "Cacheline length in bytes used for alignment when LOCKFREE_CACHE_COHERENT is on")
 target_compile_definitions(${PROJECT_NAME}
 INTERFACE
     LOCKFREE_CACHE_COHERENT=$<BOOL:${LOCKFREE_CACHE_COHERENT}>
+    LOCKFREE_CACHELINE_LENGTH=${LOCKFREE_CACHELINE_LENGTH}
 )
-
-if (DEFINED LOCKFREE_CACHELINE_LENGTH)
-    target_compile_definitions(${PROJECT_NAME}
-    INTERFACE
-        LOCKFREE_CACHELINE_LENGTH=${LOCKFREE_CACHELINE_LENGTH}
-    )
-endif()
 
 # Only build tests if we're actually working on the library,
 # not when the library is being used in a project

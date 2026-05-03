@@ -39,16 +39,6 @@
 #ifndef LOCKFREE_HPP
 #define LOCKFREE_HPP
 
-/************************** DEFINE ****************************/
-
-#ifndef LOCKFREE_CACHE_COHERENT
-#define LOCKFREE_CACHE_COHERENT true
-#endif
-
-#ifndef LOCKFREE_CACHELINE_LENGTH
-#define LOCKFREE_CACHELINE_LENGTH 64U
-#endif
-
 /************************** INCLUDE ***************************/
 
 #include "spsc/bipartite_buf.hpp"
