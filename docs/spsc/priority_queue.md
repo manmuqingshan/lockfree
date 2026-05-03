@@ -41,4 +41,4 @@ if (read) {
 
 This implementation has `O(1)` time complexity for `Push` and `O(current_max_priority)` for `Pop` making it extremely fast.
 
-On the other hand the memory usage is a function of `size * priority_count`, so adequately chosing the number of priorities is necessary.
+On the other hand the memory usage is a function of `size * priority_count`, so adequately choosing the number of priorities is necessary.

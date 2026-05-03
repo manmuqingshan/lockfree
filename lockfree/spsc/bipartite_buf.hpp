@@ -34,12 +34,17 @@
  * This file is part of lockfree
  *
  * Author:          Djordje Nedic <nedic.djordje2@gmail.com>
- * Version:         v3.0.0
+ * Version:         v3.0.1
  **************************************************************/
 
 /************************** INCLUDE ***************************/
 #ifndef LOCKFREE_BIPARTITE_BUF_HPP
 #define LOCKFREE_BIPARTITE_BUF_HPP
+
+#if !defined(LOCKFREE_CACHE_COHERENT) || !defined(LOCKFREE_CACHELINE_LENGTH)
+#error                                                                         \
+    "lockfree requires LOCKFREE_CACHE_COHERENT and LOCKFREE_CACHELINE_LENGTH to be defined; use the CMake build or define them manually"
+#endif
 
 #include <atomic>
 #include <cstddef>
@@ -65,7 +70,7 @@ template <typename T, size_t size> class BipartiteBuf {
     /**
      * @brief Acquires a linear region in the bipartite buffer for writing
      * Should only be called from the producer thread.
-     * @param[in] Free linear space in the buffer required
+     * @param[in] free_required Free linear space in the buffer required
      * @retval Pointer to the beginning of the linear space, nullptr if no space
      */
     T *WriteAcquire(size_t free_required);
@@ -74,7 +79,7 @@ template <typename T, size_t size> class BipartiteBuf {
     /**
      * @brief Acquires a linear region in the bipartite buffer for writing
      * Should only be called from the producer thread.
-     * @param[in] Free linear space in the buffer required
+     * @param[in] free_required Free linear space in the buffer required
      * @retval Span of the linear space
      */
     std::span<T> WriteAcquireSpan(size_t free_required);
@@ -83,7 +88,7 @@ template <typename T, size_t size> class BipartiteBuf {
     /**
      * @brief Releases the bipartite buffer after a write
      * Should only be called from the producer thread.
-     * @param[in] Elements written to the linear space
+     * @param[in] written Elements written to the linear space
      * @retval None
      */
     void WriteRelease(size_t written);
@@ -92,7 +97,7 @@ template <typename T, size_t size> class BipartiteBuf {
     /**
      * @brief Releases the bipartite buffer after a write
      * Should only be called from the producer thread.
-     * @param[in] Span of the linear space
+     * @param[in] written Span of the linear space
      * @retval None
      */
     void WriteRelease(std::span<T> written);
@@ -118,7 +123,7 @@ template <typename T, size_t size> class BipartiteBuf {
     /**
      * @brief Releases the bipartite buffer after a read
      * Should only be called from the consumer thread.
-     * @param[in] Elements read from the linear region
+     * @param[in] read Elements read from the linear region
      * @retval None
      */
     void ReadRelease(size_t read);
@@ -127,7 +132,7 @@ template <typename T, size_t size> class BipartiteBuf {
     /**
      * @brief Releases the bipartite buffer after a read
      * Should only be called from the consumer thread.
-     * @param[in] Span of the linear space
+     * @param[in] read Span of the linear space
      * @retval None
      */
     void ReadRelease(std::span<T> read);

@@ -34,12 +34,17 @@
  * This file is part of lockfree
  *
  * Author:          Djordje Nedic <nedic.djordje2@gmail.com>
- * Version:         v3.0.0
+ * Version:         v3.0.1
  **************************************************************/
 
 /************************** INCLUDE ***************************/
 #ifndef LOCKFREE_QUEUE_HPP
 #define LOCKFREE_QUEUE_HPP
+
+#if !defined(LOCKFREE_CACHE_COHERENT) || !defined(LOCKFREE_CACHELINE_LENGTH)
+#error                                                                         \
+    "lockfree requires LOCKFREE_CACHE_COHERENT and LOCKFREE_CACHELINE_LENGTH to be defined; use the CMake build or define them manually"
+#endif
 
 #include <atomic>
 #include <cstddef>

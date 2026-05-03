@@ -33,21 +33,11 @@
  * This file is part of lockfree
  *
  * Author:          Djordje Nedic <nedic.djordje2@gmail.com>
- * Version:         v3.0.0
+ * Version:         v3.0.1
  **************************************************************/
 
 #ifndef LOCKFREE_HPP
 #define LOCKFREE_HPP
-
-/************************** DEFINE ****************************/
-
-#ifndef LOCKFREE_CACHE_COHERENT
-#define LOCKFREE_CACHE_COHERENT true
-#endif
-
-#ifndef LOCKFREE_CACHELINE_LENGTH
-#define LOCKFREE_CACHELINE_LENGTH 64U
-#endif
 
 /************************** INCLUDE ***************************/
 

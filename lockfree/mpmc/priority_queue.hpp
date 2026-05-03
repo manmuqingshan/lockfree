@@ -33,7 +33,7 @@
  * This file is part of lockfree
  *
  * Author:          Djordje Nedic <nedic.djordje2@gmail.com>
- * Version:         v3.0.0
+ * Version:         v3.0.1
  **************************************************************/
 
 /************************** INCLUDE ***************************/
@@ -63,17 +63,15 @@ template <typename T, size_t size, size_t priority_count> class PriorityQueue {
   public:
     /**
      * @brief Adds an element with a specified priority into the queue.
-     * Should only be called from the producer thread.
-     * @param[in] Element
-     * @param[in] Element priority
+     * @param[in] element Element to push
+     * @param[in] priority Element priority
      * @retval Operation success
      */
     bool Push(const T &element, size_t priority);
 
     /**
      * @brief Removes an element with the highest priority from the queue.
-     * Should only be called from the consumer thread.
-     * @param[out] Element
+     * @param[out] element Element popped
      * @retval Operation success
      */
     bool Pop(T &element);
@@ -81,7 +79,6 @@ template <typename T, size_t size, size_t priority_count> class PriorityQueue {
 #if __cplusplus >= 201703L || (defined(_MSVC_LANG) && _MSVC_LANG >= 201703L)
     /**
      * @brief Removes an element with the highest priority from the queue.
-     * Should only be called from the consumer thread.
      * @retval Either the element or nothing if the queue is empty.
      */
     std::optional<T> Pop();
