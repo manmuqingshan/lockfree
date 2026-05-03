@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.0.1
+- Fixed `LOCKFREE_CACHE_COHERENT` being silently ignored: the variable's value wasn't forwarded to the compiler, so `-DLOCKFREE_CACHE_COHERENT=false` had no effect and cacheline padding was always enabled
+- **Important**: `LOCKFREE_CACHE_COHERENT` and `LOCKFREE_CACHELINE_LENGTH` are now sourced exclusively from CMake; non-CMake builds must define both macros themselves and will fail to compile with an `#error` if either is missing
+- Fixed broken example code in [Bipartite Buffer](docs/spsc/bipartite_buf.md) docs (unbalanced parentheses)
+- Fixed incorrect `@retval` text for `Read`/`Peek`/`Skip` in [Ring Buffer](docs/spsc/ring_buf.md) (was copy-pasted from `Write`)
+- Removed incorrect single-thread caveats from [mpmc::PriorityQueue](docs/mpmc/priority_queue.md) `Push`/`Pop` documentation
+- Added missing parameter names to Doxygen `@param` tags across all data structure headers
+- Various README and documentation fixes
+
 ## 3.0.0
 - **Breaking**: `PopOptional()` has been renamed to `Pop()` as an overload for the  [Queue](docs/spsc/queue.md)s
 - **Breaking**: [mpmc::Queue](docs/mpmc/queue.md) now enforces a power-of-2 `size`. This is necessary to prevent deadlocks on index overflows.

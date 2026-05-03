@@ -34,7 +34,7 @@
  * This file is part of lockfree
  *
  * Author:          Djordje Nedic <nedic.djordje2@gmail.com>
- * Version:         v3.0.0
+ * Version:         v3.0.1
  **************************************************************/
 
 #include <cstring>
